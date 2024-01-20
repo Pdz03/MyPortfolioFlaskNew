@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    /> -->
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/x-icon">
+    
+    <link
+      href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/aos/aos.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}"
+      rel="stylesheet"
+    />
+    <link
+      href="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}"
+      rel="stylesheet"
+    />
+
+    <!-- Template Main CSS File -->
+    <link
+      href="{{ url_for('static', filename='css/main.css') }}"
+      rel="stylesheet"
+    />
+    <link
+    href="{{ url_for('static', filename='css/style.css') }}"
+    rel="stylesheet"
+  />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.1.0/classic/ckeditor.js"></script>
+
+    <!-- <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script> -->
+    <script>
+            let editor;
+      $(document).ready(function () {
+        ClassicEditor
+        .create( document.querySelector( '#deskripsi' ) )
+        .then((newEditor) => {
+        editor = newEditor;
+
+        console.log('Editor was initialized successfully:', newEditor);
+        })
+        .catch( error => {
+            console.error( error );
+        } );
+      })
+      </script>
+    <title>My Portofolio - Syaifudin Fendi Prasetyo</title>
+  </head>
+  <body>
+    <main id="header" class="visually-hidden">
+      <!-- ======= Breadcrumbs ======= -->
+      <div
+        class="breadcrumbs d-flex align-items-center"
+        style="background-image: url('{{ url_for('static', filename='assets/images/header.png') }}');"
+      >
+        <div
+          class="container position-relative d-flex flex-column align-items-center"
+          data-aos="fade"
+        >
+          <h2>Welcome to My Portofolio</h1>
+          <hr />
+          <p class="subtitle has-text-centered is-size-6-mobile">
+            "Experience is the name everyone gives to their mistakes"
+          </p>
+          <p class="subtitle has-text-centered is-italic is-size-6-mobile">
+            - Oscar Wide -
+          </p>
+            <button
+              class="btn btn-light mt-4"
+              onclick="window.location.href='#main'"
+            >
+              Let's see my content!
+            </button>
+        </div>
+      </div>
+    </main>
+    <div class="container-fluid d-flex sticky-top bg-dark justify-content-end visually-hidden">
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <nav id="navbar" class="navbar navbar-expand-lg navbar-dark">
+        <ul>
+          <li><a href="#main" id="navbar1" onclick="aboutactive()">About Me</a></li>
+          <li><a href="#skill" id="navbar2" onclick="skillactive()">My Skill</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbar3" >My Project</a>
+            <ul class="dropdown-menu">
+              <li><a href="/webdev" id="navweb">Web Development</a></li>
+            </ul>          
+          </li>
+          <li><a href="#contact" id="navbar4" onclick="contactactive()">Contact Me</a></li>
+        </ul>
+      </nav>
+    </div>
+      <main>
+        <section id="main" class="row" data-aos="fade-up" data-aos-delay="100">
+          <form id="uploadForm" enctype="multipart/form-data">
+          <div class="form-group">
+            <div class="input-group mb-3">
+              <input type="text" id="title" class="form-control" placeholder="Judul" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <input type="text" id="desk1" class="form-control" placeholder="Deskripsi1" aria-label="Desk1" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1">http://</span>
+              <input type="text" id="url" class="form-control" placeholder="URL Website" aria-label="URL" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <div
+              class="form-control"
+              id="deskripsi"
+              placeholder="Masukan deskripsi"
+              required
+            ></div>
+            </div>
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="mainimage">
+            </div>
+            <hr>
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="image" name="image[]" multiple accept="image/*">
+            </div>
+            <button class="btn btn-secondary" type="button" id="send" >Kirim</button>
+          </div>
+        </form>
+        </section>
+      </main>
+      <footer>
+        <div class="fixed text-center">
+          <p class="fw-bold">Copyright &copy; 2023 | Syaifudin Fendi Prasetyo</p>
+        </div>
+      </footer>
+    <a
+      href="#"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <div id="preloader"></div>
+
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/purecounter/purecounter_vanilla.js') }}"></script>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/navbar-control.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/project-control.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/admin-control.js') }}"></script>
+    
+  </body>
+</html>
+

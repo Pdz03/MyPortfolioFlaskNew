@@ -1,0 +1,193 @@
+* {
+    font-family: 'Nunito', sans-serif;
+}
+
+header > .hero{
+    background-image: url('https://i.ibb.co/GvW3cQD/header.png');
+    background-size: cover;
+    background-color: #2B5278;
+}
+
+header > .card > .card-body{
+    height:300px;
+    background-image: url('https://i.ibb.co/GvW3cQD/header.png');
+    background-size: cover;
+    background-color: #2B5278;
+}
+
+header > .card > .card-body > .card-title{
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+header > .card > .card-body > .card-text {
+    font-size: 20px;
+}
+
+header > .card > .card-body > .card-text2 {
+    margin-bottom: 50px;
+}
+
+header > .card > .card-body > a {
+    margin-bottom: 20px;
+    
+}
+
+#main{
+    min-height:700px;
+}
+
+#main > .photo > #img-1 {
+    position: absolute;
+    animation-name: foto;
+    animation-duration: 2s;
+    z-index: 997;
+    width:45%;
+}
+
+@keyframes foto {
+    0%   {opacity:0;}
+    100%   {opacity: 1;}
+}
+
+#main > .photo  > #img-2 {
+    position: absolute;
+    animation-name: kiri;
+    animation-duration: 3s;
+    z-index: 998;
+    width:50%;
+}
+
+@keyframes kiri {
+    0%   {left:-550px;}
+    100%   {left:0px;}
+}
+
+#main > .id-content  > #img-3 {
+    position: absolute;
+    animation-name: kanan;
+    animation-duration: 3s;
+    z-index: 998;
+    width:50%;
+}
+
+@keyframes kanan {
+    0%   {right:-550px;}
+    100%   {right:0px;}
+}
+
+#main > .id-content > .main-content {
+    margin-top: 220px;
+    position: absolute;
+    z-index: 999;
+}
+
+#main > .id-content > .main-content > h1{
+    font-size: 60px;
+    border-top: 3px black solid;
+}
+
+#main > .id-content > .main-content > .position{
+    font-size: 20px;
+}
+
+#main > .id-content > .main-content > .description{
+    width: 90%;
+    text-align: justify;
+    border-top: 2px black solid;
+}
+
+.card-icon > i{
+    font-size: 50px;
+}
+
+.card-skill {
+    margin: 20px 0 20px 0;
+    font-size: 20px;
+}
+
+#skill {
+    margin:50px;
+    padding-top: 50px;
+}
+
+#skill > h1 {
+    font-size: 46px;
+}
+
+#skill > .skill-footer {
+    padding-top:20px;
+}
+
+#skill > .skill-footer > p {
+    width:80%;
+    font-size: 20px;
+}
+
+#skill > .skill-footer > a {
+    margin-top:20px;
+    width:40%;
+}
+
+.skill-line {
+    padding-top:50px;
+}
+
+.skill-line > img {
+    width:100%;
+}
+
+.skill-line-b > img {
+    width:100%;
+}
+
+#project {
+    margin:50px;
+    padding-top: 50px;
+}
+
+#project > h1 {
+    font-size: 46px;
+}
+
+#project > .skill-footer > p {
+    width:80%;
+}
+
+#project > .skill-footer > a {
+    width:40%;
+}
+
+#contact {
+    margin-bottom: 30px;
+}
+
+#contact > .title {
+    font-size: 40px;
+    padding:40px 0 10px 0;
+}
+
+.contact-head{
+    padding: 20px;
+}
+
+.card-body > .card-title {
+    border-bottom: 1px solid black;
+}
+
+.card-body > .ls-contact > p > i{
+    font-size: 30px;
+}
+
+.card-body > .ls-contact > p > a {
+    text-decoration: none;
+    color:  black;
+}
+
+.card-body > .ls-contact > p {
+    font-size: 20px;
+}
+
+footer{
+    position:relative;
+}
