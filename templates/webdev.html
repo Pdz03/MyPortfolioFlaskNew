@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta property="og:title" content="My Portfolio - Syaifudin Fendi Prasetyo" />
+    <meta
+      property="og:title"
+      content="My Portfolio - Syaifudin Fendi Prasetyo"
+    />
     <meta property="og:description" content="Welcome to My Portfolio" />
     <meta
       property="og:image"
@@ -120,107 +123,109 @@
         <div class="type-prj bg-dark mt-5" style="width: fit-content">
           <h1 class="text-white">&SmallCircle; Web Development</h1>
         </div>
+        {% for data in porto %}
+        <div
+          class="modal fade"
+          id="PrjDetail{{data.prjid}}"
+          tabindex="-1"
+          aria-labelledby="PrjDetail{{data.prjid}}"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="PrjDetail{{data.prjid}}">
+                  {{data.title}}
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div
+                  id="carouselExampleAutoplaying"
+                  class="carousel slide"
+                  data-bs-ride="carousel"
+                >
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img
+                        src="{{ url_for('static', filename='assets/'+data.mainimage) }}"
+                        class="d-block w-100"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="{{ url_for('static', filename='assets/'+data.image0) }}"
+                        class="d-block w-100"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="{{ url_for('static', filename='assets/'+data.image1) }}"
+                        class="d-block w-100"
+                        alt="..."
+                      />
+                    </div>
+                    <div class="carousel-item">
+                      <img
+                        src="{{ url_for('static', filename='assets/'+data.image2) }}"
+                        class="d-block w-100"
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                  <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev"
+                  >
+                    <span
+                      class="carousel-control-prev-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next"
+                  >
+                    <span
+                      class="carousel-control-next-icon"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+                <p class="card-text">{{data.desk1}}</p>
+                <p class="card-text">{{data.deskripsi | safe}}</p>
+                <a
+                  href="{{data.url}}"
+                  class="btn btn-dark"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Open Website
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
         <div
           class="row justify-content-md-center mt-4 webdev-container"
           data-aos="fade-up"
           data-aos-delay="100"
         >
           {% for data in porto %}
-          <div
-            class="modal fade"
-            id="PrjDetail{{data.prjid}}"
-            tabindex="-1"
-            aria-labelledby="shareExperienceModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="shareExperienceModalLabel">
-                    {{data.title}}
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">
-                  <div
-                    id="carouselExampleAutoplaying"
-                    class="carousel slide"
-                    data-bs-ride="carousel"
-                  >
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img
-                          src="{{ url_for('static', filename='assets/'+data.mainimage) }}"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="{{ url_for('static', filename='assets/'+data.image0) }}"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="{{ url_for('static', filename='assets/'+data.image1) }}"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                      <div class="carousel-item">
-                        <img
-                          src="{{ url_for('static', filename='assets/'+data.image2) }}"
-                          class="d-block w-100"
-                          alt="..."
-                        />
-                      </div>
-                    </div>
-                    <button
-                      class="carousel-control-prev"
-                      type="button"
-                      data-bs-target="#carouselExampleIndicators"
-                      data-bs-slide="prev"
-                    >
-                      <span
-                        class="carousel-control-prev-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                      class="carousel-control-next"
-                      type="button"
-                      data-bs-target="#carouselExampleIndicators"
-                      data-bs-slide="next"
-                    >
-                      <span
-                        class="carousel-control-next-icon"
-                        aria-hidden="true"
-                      ></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
-                  <p class="card-text">{{data.desk1}}</p>
-                  <p class="card-text">{{data.deskripsi | safe}}</p>
-                  <a
-                    href="{{data.url}}"
-                    class="btn btn-dark"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Open Website
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
           <div class="card mb-3 m-2 webdev-list">
             <div class="row g-0">
               <div class="col-md-5">
@@ -408,14 +413,34 @@
 
     <div id="preloader"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js" integrity="sha512-S/H9RQ6govCzeA7F9D0m8NGfsGf0/HjJEiLEfWGaMCjFzavo+DkRbYtZLSO+X6cZsIKQ6JvV/7Y9YMaYnSGnAA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+      integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"
+      integrity="sha512-S/H9RQ6govCzeA7F9D0m8NGfsGf0/HjJEiLEfWGaMCjFzavo+DkRbYtZLSO+X6cZsIKQ6JvV/7Y9YMaYnSGnAA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"
+      integrity="sha512-Zq2BOxyhvnRFXu0+WE6ojpZLOU2jdnqbrM1hmVdGzyeCa1DgM3X5Q4A/Is9xA1IkbUeDd7755dNNI/PzSf2Pew=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/navbar-control.js') }}"></script>
     <script src="{{ url_for('static', filename='js/mail-control.js') }}"></script>
   </body>
 </html>
