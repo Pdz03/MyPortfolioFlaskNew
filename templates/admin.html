@@ -54,21 +54,7 @@
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"
     ></script> -->
-    <script>
-            let editor;
-      $(document).ready(function () {
-        ClassicEditor
-        .create( document.querySelector( '#deskripsi' ) )
-        .then((newEditor) => {
-        editor = newEditor;
 
-        console.log('Editor was initialized successfully:', newEditor);
-        })
-        .catch( error => {
-            console.error( error );
-        } );
-      })
-      </script>
     <title>My Portofolio - Syaifudin Fendi Prasetyo</title>
   </head>
   <body>
@@ -100,42 +86,121 @@
       </div>
     </main>
       <main>
-        <section id="main" class="row" data-aos="fade-up" data-aos-delay="100">
-          <form id="uploadForm" enctype="multipart/form-data">
-          <div class="form-group">
-            <div class="input-group mb-3">
-              <input type="text" id="title" class="form-control" placeholder="Judul" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" id="desk1" class="form-control" placeholder="Deskripsi1" aria-label="Desk1" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="basic-addon1">http://</span>
-              <input type="text" id="url" class="form-control" placeholder="URL Website" aria-label="URL" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-              <div
-              class="form-control"
-              id="deskripsi"
-              placeholder="Masukan deskripsi"
-              required
-            ></div>
-            </div>
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="mainimage">
-            </div>
-            <hr>
-            <div class="input-group mb-3">
-              <input type="file" class="form-control" id="image" name="image[]" multiple accept="image/*">
-            </div>
-            <button class="btn btn-secondary" type="button" id="send" >Kirim</button>
+        <section id="project-list" class="container mt-5" data-aos="fade-up">
+          <h3>Manage Portfolio</h3>
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+              <thead class="table-dark">
+                <tr>
+                  <th>Title</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for p in porto %}
+                <tr>
+                  <td>{{ p.title }}</td>
+                  <td>{{ p.type }}</td>
+                  <td>{{ p.desk1 }}</td>
+                  <td>
+                    <button class="btn btn-warning btn-sm" onclick='editProject({{ p | tojson }})'>Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteProject('{{ p._id }}')">Delete</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
           </div>
-        </form>
+        </section>
+
+        <section id="main" class="row mt-5 mb-5" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-10 mx-auto">
+              <div class="card shadow-lg border-0 rounded-4">
+                  <div class="card-header bg-primary text-white p-4" style="background: linear-gradient(45deg, #0d6efd, #0dcaf0);">
+                      <h3 id="form-title" class="mb-0 fw-bold"><i class="bi bi-plus-circle me-2"></i>Add New Project</h3>
+                  </div>
+                  <div class="card-body p-4 p-md-5">
+                      <form id="uploadForm" enctype="multipart/form-data">
+                          <input type="hidden" id="oid" name="oid">
+                          
+                          <h5 class="text-primary mb-3">Basic Information</h5>
+                          <div class="row g-3 mb-4">
+                              <div class="col-md-6">
+                                  <div class="form-floating">
+                                      <input type="text" id="id" class="form-control" placeholder="Project ID">
+                                      <label for="id">Project ID (Unique)</label>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-floating">
+                                      <select id="type" class="form-select">
+                                          <option value="webdev">Web Dev</option>
+                                          <option value="graphic">Graphic Design</option>
+                                          <option value="other">Other</option>
+                                      </select>
+                                      <label for="type">Project Type</label>
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <div class="form-floating">
+                                      <input type="text" id="title" class="form-control" placeholder="Project Title">
+                                      <label for="title">Title</label>
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <div class="form-floating">
+                                      <input type="text" id="url" class="form-control" placeholder="Website URL">
+                                      <label for="url">Website URL</label>
+                                  </div>
+                              </div>
+                              <div class="col-md-12">
+                                  <div class="form-floating">
+                                      <input type="text" id="desk1" class="form-control" placeholder="Short Description">
+                                      <label for="desk1">Short Description</label>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <h5 class="text-primary mb-3">Content Details</h5>
+                          <div class="mb-4">
+                              <label for="deskripsi" class="form-label text-muted small fw-bold">FULL DESCRIPTION</label>
+                              <div id="deskripsi"></div> <!-- CKEditor container -->
+                          </div>
+
+                          <h5 class="text-primary mb-3">Media</h5>
+                          <div class="row g-3 mb-4">
+                              <div class="col-md-6">
+                                  <label for="mainimage" class="form-label">Main Image</label>
+                                  <input type="file" class="form-control" id="mainimage">
+                                  <small class="text-muted d-block mt-1">Current: <span id="current-mainimage" class="text-primary fw-bold">None</span></small>
+                              </div>
+                              <div class="col-md-6">
+                                  <label for="image" class="form-label">Gallery Images</label>
+                                  <input type="file" class="form-control" id="image" name="image[]" multiple accept="image/*">
+                              </div>
+                          </div>
+
+                          <hr class="my-4 text-muted">
+
+                          <div class="d-flex justify-content-end gap-2">
+                               <button class="btn btn-light btn-lg px-4" type="button" id="reset" onclick="resetForm()">
+                                  <i class="bi bi-arrow-counterclockwise me-2"></i>Reset
+                               </button>
+                               <button class="btn btn-primary btn-lg px-5 shadow" type="button" id="send">
+                                  <i class="bi bi-save me-2"></i>Save Project
+                               </button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
         </section>
       </main>
       <footer>
         <div class="fixed text-center">
-          <p class="fw-bold">Copyright &copy; 2024 | Syaifudin Fendi Prasetyo</p>
+          <p class="fw-bold">Copyright &copy; 2025 | Syaifudin Fendi Prasetyo</p>
         </div>
       </footer>
     <a
