@@ -334,27 +334,27 @@
                     <p>
                       <i class="bi bi-envelope-at-fill"></i>
                       <a class="" onclick="mailfocus()" style="cursor: pointer;">
-                      syaifudinfendip@gmail.com
+                      {{ contacts.email if contacts else 'syaifudinfendip@gmail.com' }}
                     </a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-whatsapp"></i>
-                      <a href="https://wa.me/6289649474381"
+                      <a href="{{ contacts.whatsapp_link if contacts else 'https://wa.me/6289649474381' }}"
                       target="_blank"
                       rel="noopener noreferrer">
-                      +62 896 4947 4381</a>
+                      {{ contacts.whatsapp if contacts else '+62 896 4947 4381' }}</a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-linkedin"></i>
                       <a
-                        href="https://www.linkedin.com/in/pdz03/"
+                        href="{{ contacts.linkedin_link if contacts else 'https://www.linkedin.com/in/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Prasetyo</a
+                        >{{ contacts.linkedin_name if contacts else 'Syaifudin Fendi Prasetyo' }}</a
                       >
                     </p>
                   </div>
@@ -362,10 +362,10 @@
                     <p>
                       <i class="bi bi-facebook"></i>
                       <a
-                        href="https://www.facebook.com/Pdz03/"
+                        href="{{ contacts.facebook_link if contacts else 'https://www.facebook.com/Pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Pendoelz</a
+                        >{{ contacts.facebook_name if contacts else 'Syaifudin Fendi Pendoelz' }}</a
                       >
                     </p>
                   </div>
@@ -373,10 +373,10 @@
                     <p>
                       <i class="bi bi-instagram"></i>
                       <a
-                        href="https://www.instagram.com/maspeenn.03/"
+                        href="{{ contacts.instagram_link if contacts else 'https://www.instagram.com/maspeenn.03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@maspeenn.03</a
+                        >{{ contacts.instagram_name if contacts else '@maspeenn.03' }}</a
                       >
                     </p>
                   </div>
@@ -384,10 +384,10 @@
                     <p>
                       <i class="bi bi-telegram"></i>
                       <a
-                        href="https://t.me/pdz03/"
+                        href="{{ contacts.telegram_link if contacts else 'https://t.me/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@pdz03</a
+                        >{{ contacts.telegram_name if contacts else '@pdz03' }}</a
                       >
                     </p>
                   </div>

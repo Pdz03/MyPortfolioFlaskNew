@@ -18,9 +18,8 @@ def home():
     for data in dataproject:
         data['_id'] = str(data['_id'])
     
-    # db.projects.update_one({'prjid':'prjweb-32417'}, {'$set':{'url':'dejourney-id.glitch.me'}})
-
-    return render_template('index.html', porto = dataproject)
+    settings = db.settings.find_one({'type': 'contacts'})
+    return render_template('index.html', porto = dataproject, contacts = settings)
 
 
 @app.route('/admin', methods=['GET'])
@@ -28,7 +27,9 @@ def admin():
     dataproject = list(db.projects.find({},{}))
     for data in dataproject:
         data['_id'] = str(data['_id'])
-    return render_template('admin.html', porto=dataproject)
+    
+    settings = db.settings.find_one({'type': 'contacts'})
+    return render_template('admin.html', porto=dataproject, contacts=settings)
 
 
 @app.route('/project/webdev', methods=['GET'])
@@ -36,7 +37,9 @@ def project_web():
     dataproject = list(db.projects.find({'type':'webdev'}))
     for data in dataproject:
         data['_id'] = str(data['_id'])
-    return render_template('webdev.html', porto = dataproject)
+    
+    settings = db.settings.find_one({'type': 'contacts'})
+    return render_template('webdev.html', porto = dataproject, contacts = settings)
 
 
 @app.route('/project/graphic', methods=['GET'])
@@ -130,6 +133,38 @@ def update():
 
     db.projects.update_one({'_id': ObjectId(oid)}, {'$set': update_fields})
     return jsonify({"result": "success", "msg": 'Data Berhasil Diupdate!'})
+
+@app.route("/update_settings", methods=["POST"])
+def update_settings():
+    email = request.form.get("email")
+    whatsapp = request.form.get("whatsapp")
+    whatsapp_link = request.form.get("whatsapp_link")
+    linkedin_name = request.form.get("linkedin_name")
+    linkedin_link = request.form.get("linkedin_link")
+    facebook_name = request.form.get("facebook_name")
+    facebook_link = request.form.get("facebook_link")
+    instagram_name = request.form.get("instagram_name")
+    instagram_link = request.form.get("instagram_link")
+    telegram_name = request.form.get("telegram_name")
+    telegram_link = request.form.get("telegram_link")
+
+    doc = {
+        "type": "contacts",
+        "email": email,
+        "whatsapp": whatsapp,
+        "whatsapp_link": whatsapp_link,
+        "linkedin_name": linkedin_name,
+        "linkedin_link": linkedin_link,
+        "facebook_name": facebook_name,
+        "facebook_link": facebook_link,
+        "instagram_name": instagram_name,
+        "instagram_link": instagram_link,
+        "telegram_name": telegram_name,
+        "telegram_link": telegram_link,
+    }
+
+    db.settings.update_one({"type": "contacts"}, {"$set": doc}, upsert=True)
+    return jsonify({"result": "success", "msg": "Settings updated successfully!"})
 
 @app.route("/delete", methods=["POST"])
 def delete():
