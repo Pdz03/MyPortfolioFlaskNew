@@ -61,19 +61,16 @@
           class="container position-relative d-flex flex-column align-items-center"
           data-aos="fade"
         >
-          <h2>Welcome to My Portfolio</h1>
+          <h3 class="fw-bold text-white">Expert Web Developer: Turning Complex Problems into Clean Code</h3>
           <hr />
-          <p class="subtitle has-text-centered is-size-6-mobile">
-            "Experience is the name everyone gives to their mistakes"
-          </p>
-          <p class="subtitle has-text-centered is-italic is-size-6-mobile">
-            - Oscar Wide -
+          <p class="subtitle text-center is-size-6-mobile">
+            Bridging the gap between complex logic and seamless user experience through clean, maintainable, and efficient web solutions.
           </p>
             <button
               class="btn btn-light mt-4"
               onclick="window.location.href='#main'"
             >
-              Let's see my content!
+              View My Work
             </button>
         </div>
       </div>
@@ -96,32 +93,40 @@
       </nav>
     </div>
       <main>
-        <section id="main" data-aos="fade-up" data-aos-delay="100">
-            <div class="row">
-              <div class="photo col-lg-6">
-                <img
-                  src="{{ url_for('static', filename='/assets/images/photoframe.png') }}"
-                  id="img-1"
-                />
-              </div>
-              <div class="id-content col-lg-6">
-                <div class="main-content" data-aos="fade-up" data-aos-delay="100">
-                  <h1 class="fw-bold">SYAIFUDIN FENDI PRASETYO</h1>
-                  <p class="position">Web Developer | UI/UX Designer</p>
-                  <p class="description">
-                    Very focused, with the ability to complete tasks accurately in an
-                    all-round environment quickly with varying deadlines. Understand
-                    everything from which ones are most important and which ones
-                    should be prioritized
-                  </p>
-                  <a href="#skill" class="btn btn-dark">Let's see my skill!</a>
-                  <a
-                    href="https://drive.google.com/file/d/1ej2ZyEZQLCEwcgKwfIjjuRn9HFlkH7Oa/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-dark"
-                    >My Curriculum Vitae</a
-                  >
+        <section id="main" class="hero-section" data-aos="fade-up" data-aos-delay="100">
+            <div class="container-fluid p-0 position-relative overflow-hidden">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-7 position-relative">
+                  <div class="hero-image-wrapper">
+                    <img
+                      src="{{ url_for('static', filename='assets/images/fndmgl.png') }}"
+                      class="hero-img"
+                      id="img-1"
+                      alt="Syaifudin Fendi Prasetyo"
+                    />
+                    <div class="hero-image-gradient"></div>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="hero-content-wrapper">
+                    <div class="glass-card" data-aos="fade-left" data-aos-delay="200">
+                      <p class="description fw-bold greeting-text">Hi, I'm Syaifudin Fendi Prasetyo</p>
+                      <p class="description role-text">Web Developer | UI/UX Designer</p>
+                      <p class="description bio-text">
+                        I am a Full-Stack Web Developer and Product Division Leader with a proven track record of upgrading legacy systems to modern architectures (like Next.js and Python). With a strong foundation in UI/UX design, I don't just write code—I build scalable digital products that deliver real business value and exceptional user experiences.
+                      </p>
+                      <div class="hero-actions">
+                        <a href="#skill" class="btn btn-dark">Let's see my skill!</a>
+                        <a
+                          href="https://drive.google.com/file/d/1ej2ZyEZQLCEwcgKwfIjjuRn9HFlkH7Oa/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="btn btn-outline-dark"
+                          >My CV</a
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
