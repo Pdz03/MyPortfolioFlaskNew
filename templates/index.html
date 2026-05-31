@@ -99,7 +99,7 @@
                 <div class="col-lg-7 position-relative">
                   <div class="hero-image-wrapper">
                     <img
-                      src="{{ url_for('static', filename='assets/images/fndmgl.png') }}"
+                      src="{{ url_for('static', filename='assets/images/fndbyl.png') }}"
                       class="hero-img"
                       id="img-1"
                       alt="Syaifudin Fendi Prasetyo"
@@ -132,36 +132,39 @@
             </div>
         </section>
         <div id="skill" class="bg-dark" data-aos="fade-up" data-aos-delay="100">
-          <h1 class="text-decoration-underline text-white fw-bold">MY SKILL</h1>
+          <h1 class="section-title text-white fw-bold">MY SKILL</h1>
           <div class="skill-body row justify-content-center mt-5">
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-pencil-fill"></i>
                 </div>
                 <div class="card-skill fw-bold">Creative Design</div>
+                <p class="skill-description">Turning ideas into clean, purposeful visual concepts.</p>
               </div>
             </div>
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-pc-display-horizontal"></i>
                 </div>
                 <div class="card-skill fw-bold">UI/UX Design</div>
+                <p class="skill-description">Designing intuitive interfaces with a user-first approach.</p>
               </div>
             </div>
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-globe"></i>
                 </div>
                 <div class="card-skill fw-bold">Web Development</div>
+                <p class="skill-description">Building responsive and scalable digital experiences.</p>
               </div>
             </div>
           </div>
@@ -180,7 +183,7 @@
           />
         </div>
         <div id="project">
-          <h1 class="text-decoration-underline fw-bold text-end">MY PROJECT</h1>
+          <h1 class="section-title fw-bold text-end">MY PROJECT</h1>
           <div class="type-prj bg-dark" style="width:fit-content">
           <h1 class="text-white">&SmallCircle; Web Development</h1>
           </div>
@@ -188,11 +191,11 @@
             <div class="row justify-content-center mt-5 ">
             {% for i in range(0,3) %}
             <div class="col-lg-3 post-item">
-              <div class="card position-relative h-100 bg-dark text-white">
+              <div class="card project-card position-relative h-100 bg-dark text-white">
                 <img
                   src="{{ url_for('static', filename='/assets/'+porto[i].mainimage) }}"
-                  class="card-img-top"
-                  alt="..."
+                  class="card-img-top project-thumbnail"
+                  alt="Preview of {{porto[i].title}}"
                 />
                 <div class="card-body">
                   <h5 class="card-title">
@@ -212,7 +215,7 @@
               </div>
             </div>
             {% endfor %}
-          <div class="col-lg-3">
+          <div class="col-lg-3 more-project-column">
             <div class="more">
               <div class="card-body">
                 <h3 class="card-title">
