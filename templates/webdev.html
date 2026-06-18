@@ -119,22 +119,27 @@
       </nav>
     </div>
     <main>
-      <section id="main" class="row m-0">
-        <div class="type-prj bg-dark mt-5" style="width: fit-content">
-          <h1 class="text-white">&SmallCircle; Web Development</h1>
+      <section id="main" class="webdev-section">
+        <div class="webdev-heading">
+          <span class="webdev-kicker">Selected Work</span>
+          <h1>Web Development Projects</h1>
+          <p>
+            A collection of web projects I have built and contributed to.
+            Explore each project to see more details and screenshots.
+          </p>
         </div>
         {% for data in porto %}
         <div
           class="modal fade"
           id="PrjDetail{{data.prjid}}"
           tabindex="-1"
-          aria-labelledby="PrjDetail{{data.prjid}}"
+          aria-labelledby="PrjDetailLabel{{data.prjid}}"
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered" role="document">
+            <div class="modal-content webdev-modal">
               <div class="modal-header">
-                <h5 class="modal-title" id="PrjDetail{{data.prjid}}">
+                <h5 class="modal-title" id="PrjDetailLabel{{data.prjid}}">
                   {{data.title}}
                 </h5>
                 <button
@@ -146,7 +151,7 @@
               </div>
               <div class="modal-body">
                 <div
-                  id="carouselExampleAutoplaying"
+                  id="projectCarousel{{data.prjid}}"
                   class="carousel slide"
                   data-bs-ride="carousel"
                 >
@@ -155,35 +160,35 @@
                       <img
                         src="{{ url_for('static', filename='assets/'+data.mainimage) }}"
                         class="d-block w-100"
-                        alt="..."
+                        alt="{{data.title}} main preview"
                       />
                     </div>
                     <div class="carousel-item">
                       <img
                         src="{{ url_for('static', filename='assets/'+data.image0) }}"
                         class="d-block w-100"
-                        alt="..."
+                        alt="{{data.title}} preview 1"
                       />
                     </div>
                     <div class="carousel-item">
                       <img
                         src="{{ url_for('static', filename='assets/'+data.image1) }}"
                         class="d-block w-100"
-                        alt="..."
+                        alt="{{data.title}} preview 2"
                       />
                     </div>
                     <div class="carousel-item">
                       <img
                         src="{{ url_for('static', filename='assets/'+data.image2) }}"
                         class="d-block w-100"
-                        alt="..."
+                        alt="{{data.title}} preview 3"
                       />
                     </div>
                   </div>
                   <button
                     class="carousel-control-prev"
                     type="button"
-                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-target="#projectCarousel{{data.prjid}}"
                     data-bs-slide="prev"
                   >
                     <span
@@ -195,7 +200,7 @@
                   <button
                     class="carousel-control-next"
                     type="button"
-                    data-bs-target="#carouselExampleIndicators"
+                    data-bs-target="#projectCarousel{{data.prjid}}"
                     data-bs-slide="next"
                   >
                     <span
@@ -205,8 +210,8 @@
                     <span class="visually-hidden">Next</span>
                   </button>
                 </div>
-                <p class="card-text">{{data.desk1}}</p>
-                <p class="card-text">{{data.deskripsi | safe}}</p>
+                <p class="webdev-modal-summary">{{data.desk1}}</p>
+                <div class="webdev-modal-description">{{data.deskripsi | safe}}</div>
                 <a
                   href="https://{{data.url}}"
                   class="btn btn-dark"
@@ -221,30 +226,31 @@
         </div>
         {% endfor %}
         <div
-          class="row justify-content-md-center mt-4 webdev-container"
+          class="webdev-container"
           data-aos="fade-up"
           data-aos-delay="100"
         >
           {% for data in porto %}
-          <div class="card mb-3 m-2 webdev-list">
-            <div class="row g-0">
-              <div class="col-md-5">
+          <article class="card webdev-list">
+            <div class="row g-0 h-100">
+              <div class="col-md-5 webdev-image-wrapper">
                 <img
                   src="{{ url_for('static', filename='/assets/'+data.mainimage) }}"
-                  class="img-fluid rounded-start mt-3"
-                  alt="..."
+                  class="webdev-image"
+                  alt="Preview of {{data.title}}"
                 />
               </div>
-              <div class="col-md-6">
-                <div class="card-body">
+              <div class="col-md-7">
+                <div class="card-body webdev-card-body">
+                  <span class="webdev-card-label">Web Development</span>
                   <h4 class="card-title">{{data.title}}</h4>
-                  <p class="card-text">{{data.desk1}}</p>
-                  <div class="card-text">
-                    {{data.deskripsi | safe | truncate(180)}}
+                  <p class="card-text webdev-card-summary">{{data.desk1}}</p>
+                  <div class="card-text webdev-card-description">
+                    {{data.deskripsi | striptags | truncate(180)}}
                   </div>
                   <button
                     type="button"
-                    class="btn btn-secondary readmore stretched-link"
+                    class="btn btn-dark readmore stretched-link"
                     data-bs-toggle="modal"
                     data-bs-target="#PrjDetail{{data.prjid}}"
                   >
@@ -253,7 +259,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
           {% endfor %}
         </div>
       </section>
@@ -334,27 +340,27 @@
                     <p>
                       <i class="bi bi-envelope-at-fill"></i>
                       <a class="" onclick="mailfocus()" style="cursor: pointer;">
-                      syaifudinfendip@gmail.com
+                      {{ contacts.email if contacts else 'syaifudinfendip@gmail.com' }}
                     </a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-whatsapp"></i>
-                      <a href="https://wa.me/6289649474381"
+                      <a href="{{ contacts.whatsapp_link if contacts else 'https://wa.me/6289649474381' }}"
                       target="_blank"
                       rel="noopener noreferrer">
-                      +62 896 4947 4381</a>
+                      {{ contacts.whatsapp if contacts else '+62 896 4947 4381' }}</a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-linkedin"></i>
                       <a
-                        href="https://www.linkedin.com/in/pdz03/"
+                        href="{{ contacts.linkedin_link if contacts else 'https://www.linkedin.com/in/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Prasetyo</a
+                        >{{ contacts.linkedin_name if contacts else 'Syaifudin Fendi Prasetyo' }}</a
                       >
                     </p>
                   </div>
@@ -362,10 +368,10 @@
                     <p>
                       <i class="bi bi-facebook"></i>
                       <a
-                        href="https://www.facebook.com/Pdz03/"
+                        href="{{ contacts.facebook_link if contacts else 'https://www.facebook.com/Pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Pendoelz</a
+                        >{{ contacts.facebook_name if contacts else 'Syaifudin Fendi Pendoelz' }}</a
                       >
                     </p>
                   </div>
@@ -373,10 +379,10 @@
                     <p>
                       <i class="bi bi-instagram"></i>
                       <a
-                        href="https://www.instagram.com/maspeenn.03/"
+                        href="{{ contacts.instagram_link if contacts else 'https://www.instagram.com/maspeenn.03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@maspeenn.03</a
+                        >{{ contacts.instagram_name if contacts else '@maspeenn.03' }}</a
                       >
                     </p>
                   </div>
@@ -384,10 +390,10 @@
                     <p>
                       <i class="bi bi-telegram"></i>
                       <a
-                        href="https://t.me/pdz03/"
+                        href="{{ contacts.telegram_link if contacts else 'https://t.me/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@pdz03</a
+                        >{{ contacts.telegram_name if contacts else '@pdz03' }}</a
                       >
                     </p>
                   </div>

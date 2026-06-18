@@ -76,6 +76,33 @@ $(document).ready(function () {
             }
         });
     });
+
+    // Save Settings
+    $('#saveSettings').click(function() {
+        const formData = $('#settingsForm').serialize();
+        
+        $.ajax({
+            url: '/update_settings',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                if(response.result === 'success') {
+                    Swal.fire({
+                        title: 'Updated!',
+                        text: response.msg,
+                        icon: 'success'
+                    }).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire('Error', 'Failed to update settings', 'error');
+                }
+            },
+            error: function(err) {
+                Swal.fire('Error', 'Something went wrong', 'error');
+            }
+        });
+    });
 });
 
 window.editProject = function(project) {

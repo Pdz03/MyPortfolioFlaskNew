@@ -61,19 +61,16 @@
           class="container position-relative d-flex flex-column align-items-center"
           data-aos="fade"
         >
-          <h2>Welcome to My Portfolio</h1>
+          <h3 class="fw-bold text-white">Expert Web Developer: Turning Complex Problems into Clean Code</h3>
           <hr />
-          <p class="subtitle has-text-centered is-size-6-mobile">
-            "Experience is the name everyone gives to their mistakes"
-          </p>
-          <p class="subtitle has-text-centered is-italic is-size-6-mobile">
-            - Oscar Wide -
+          <p class="subtitle text-center is-size-6-mobile">
+            Bridging the gap between complex logic and seamless user experience through clean, maintainable, and efficient web solutions.
           </p>
             <button
               class="btn btn-light mt-4"
               onclick="window.location.href='#main'"
             >
-              Let's see my content!
+              View My Work
             </button>
         </div>
       </div>
@@ -96,67 +93,78 @@
       </nav>
     </div>
       <main>
-        <section id="main" data-aos="fade-up" data-aos-delay="100">
-            <div class="row">
-              <div class="photo col-lg-6">
-                <img
-                  src="{{ url_for('static', filename='/assets/images/photoframe.png') }}"
-                  id="img-1"
-                />
-              </div>
-              <div class="id-content col-lg-6">
-                <div class="main-content" data-aos="fade-up" data-aos-delay="100">
-                  <h1 class="fw-bold">SYAIFUDIN FENDI PRASETYO</h1>
-                  <p class="position">Web Developer | UI/UX Designer</p>
-                  <p class="description">
-                    Very focused, with the ability to complete tasks accurately in an
-                    all-round environment quickly with varying deadlines. Understand
-                    everything from which ones are most important and which ones
-                    should be prioritized
-                  </p>
-                  <a href="#skill" class="btn btn-dark">Let's see my skill!</a>
-                  <a
-                    href="https://drive.google.com/file/d/1ej2ZyEZQLCEwcgKwfIjjuRn9HFlkH7Oa/view?usp=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-dark"
-                    >My Curriculum Vitae</a
-                  >
+        <section id="main" class="hero-section" data-aos="fade-up" data-aos-delay="100">
+            <div class="container-fluid p-0 position-relative overflow-hidden">
+              <div class="row g-0 align-items-center">
+                <div class="col-lg-7 position-relative">
+                  <div class="hero-image-wrapper">
+                    <img
+                      src="{{ url_for('static', filename='assets/images/fndbyl.png') }}"
+                      class="hero-img"
+                      id="img-1"
+                      alt="Syaifudin Fendi Prasetyo"
+                    />
+                    <div class="hero-image-gradient"></div>
+                  </div>
+                </div>
+                <div class="col-lg-5">
+                  <div class="hero-content-wrapper">
+                    <div class="glass-card" data-aos="fade-left" data-aos-delay="200">
+                      <p class="description fw-bold greeting-text">Hi, I'm Syaifudin Fendi Prasetyo</p>
+                      <p class="description role-text">Web Developer | UI/UX Designer</p>
+                      <p class="description bio-text">
+                        I am a Full-Stack Web Developer and Product Division Leader with a proven track record of upgrading legacy systems to modern architectures (like Next.js and Python). With a strong foundation in UI/UX design, I don't just write code—I build scalable digital products that deliver real business value and exceptional user experiences.
+                      </p>
+                      <div class="hero-actions">
+                        <a href="#skill" class="btn btn-dark">Let's see my skill!</a>
+                        <a
+                          href="https://drive.google.com/file/d/1ej2ZyEZQLCEwcgKwfIjjuRn9HFlkH7Oa/view?usp=sharing"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="btn btn-outline-dark"
+                          >My CV</a
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
         </section>
         <div id="skill" class="bg-dark" data-aos="fade-up" data-aos-delay="100">
-          <h1 class="text-decoration-underline text-white fw-bold">MY SKILL</h1>
+          <h1 class="section-title text-white fw-bold">MY SKILL</h1>
           <div class="skill-body row justify-content-center mt-5">
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-pencil-fill"></i>
                 </div>
                 <div class="card-skill fw-bold">Creative Design</div>
+                <p class="skill-description">Turning ideas into clean, purposeful visual concepts.</p>
               </div>
             </div>
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-pc-display-horizontal"></i>
                 </div>
                 <div class="card-skill fw-bold">UI/UX Design</div>
+                <p class="skill-description">Designing intuitive interfaces with a user-first approach.</p>
               </div>
             </div>
             <div class="col-lg-3 cont-skill">
               <div
-                class="card text-center p-3 text-dark"
+                class="card skill-card text-center p-3 text-dark"
               >
                 <div class="card-icon">
                   <i class="bi bi-globe"></i>
                 </div>
                 <div class="card-skill fw-bold">Web Development</div>
+                <p class="skill-description">Building responsive and scalable digital experiences.</p>
               </div>
             </div>
           </div>
@@ -175,7 +183,7 @@
           />
         </div>
         <div id="project">
-          <h1 class="text-decoration-underline fw-bold text-end">MY PROJECT</h1>
+          <h1 class="section-title fw-bold text-end">MY PROJECT</h1>
           <div class="type-prj bg-dark" style="width:fit-content">
           <h1 class="text-white">&SmallCircle; Web Development</h1>
           </div>
@@ -183,11 +191,11 @@
             <div class="row justify-content-center mt-5 ">
             {% for i in range(0,3) %}
             <div class="col-lg-3 post-item">
-              <div class="card position-relative h-100 bg-dark text-white">
+              <div class="card project-card position-relative h-100 bg-dark text-white">
                 <img
                   src="{{ url_for('static', filename='/assets/'+porto[i].mainimage) }}"
-                  class="card-img-top"
-                  alt="..."
+                  class="card-img-top project-thumbnail"
+                  alt="Preview of {{porto[i].title}}"
                 />
                 <div class="card-body">
                   <h5 class="card-title">
@@ -207,7 +215,7 @@
               </div>
             </div>
             {% endfor %}
-          <div class="col-lg-3">
+          <div class="col-lg-3 more-project-column">
             <div class="more">
               <div class="card-body">
                 <h3 class="card-title">
@@ -298,27 +306,27 @@
                     <p>
                       <i class="bi bi-envelope-at-fill"></i>
                       <a class="" onclick="mailfocus()" style="cursor: pointer;">
-                      syaifudinfendip@gmail.com
+                      {{ contacts.email if contacts else 'syaifudinfendip@gmail.com' }}
                     </a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-whatsapp"></i>
-                      <a href="https://wa.me/6289649474381"
+                      <a href="{{ contacts.whatsapp_link if contacts else 'https://wa.me/6289649474381' }}"
                       target="_blank"
                       rel="noopener noreferrer">
-                      +62 896 4947 4381</a>
+                      {{ contacts.whatsapp if contacts else '+62 896 4947 4381' }}</a>
                     </p>
                   </div>
                   <div class="ls-contact">
                     <p>
                       <i class="bi bi-linkedin"></i>
                       <a
-                        href="https://www.linkedin.com/in/pdz03/"
+                        href="{{ contacts.linkedin_link if contacts else 'https://www.linkedin.com/in/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Prasetyo</a
+                        >{{ contacts.linkedin_name if contacts else 'Syaifudin Fendi Prasetyo' }}</a
                       >
                     </p>
                   </div>
@@ -326,10 +334,10 @@
                     <p>
                       <i class="bi bi-facebook"></i>
                       <a
-                        href="https://www.facebook.com/Pdz03/"
+                        href="{{ contacts.facebook_link if contacts else 'https://www.facebook.com/Pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >Syaifudin Fendi Pendoelz</a
+                        >{{ contacts.facebook_name if contacts else 'Syaifudin Fendi Pendoelz' }}</a
                       >
                     </p>
                   </div>
@@ -337,10 +345,10 @@
                     <p>
                       <i class="bi bi-instagram"></i>
                       <a
-                        href="https://www.instagram.com/maspeenn.03/"
+                        href="{{ contacts.instagram_link if contacts else 'https://www.instagram.com/maspeenn.03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@maspeenn.03</a
+                        >{{ contacts.instagram_name if contacts else '@maspeenn.03' }}</a
                       >
                     </p>
                   </div>
@@ -348,10 +356,10 @@
                     <p>
                       <i class="bi bi-telegram"></i>
                       <a
-                        href="https://t.me/pdz03/"
+                        href="{{ contacts.telegram_link if contacts else 'https://t.me/pdz03/' }}"
                         target="_blank"
                         rel="noopener noreferrer"
-                        >@pdz03</a
+                        >{{ contacts.telegram_name if contacts else '@pdz03' }}</a
                       >
                     </p>
                   </div>
@@ -363,7 +371,7 @@
       </main>
       <footer>
         <div class="fixed text-center">
-          <p class="fw-bold">Copyright &copy; 2025 | Syaifudin Fendi Prasetyo</p>
+          <p class="fw-bold">Copyright &copy; 2026 | Syaifudin Fendi Prasetyo</p>
         </div>
       </footer>
     <a

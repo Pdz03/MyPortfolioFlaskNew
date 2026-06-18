@@ -86,6 +86,71 @@
       </div>
     </main>
       <main>
+        <section id="contact-settings" class="container mt-5" data-aos="fade-up">
+          <div class="card shadow-lg border-0 rounded-4">
+            <div class="card-header bg-dark text-white p-4">
+              <h3 class="mb-0 fw-bold"><i class="bi bi-gear-fill me-2"></i>Contact Settings</h3>
+            </div>
+            <div class="card-body p-4">
+              <form id="settingsForm">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" value="{{ contacts.email if contacts else '' }}">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">WhatsApp Name</label>
+                    <input type="text" class="form-control" name="whatsapp" value="{{ contacts.whatsapp if contacts else '' }}">
+                  </div>
+                  <div class="col-md-3">
+                    <label class="form-label">WhatsApp Link</label>
+                    <input type="text" class="form-control" name="whatsapp_link" value="{{ contacts.whatsapp_link if contacts else '' }}">
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <label class="form-label">LinkedIn Name</label>
+                    <input type="text" class="form-control" name="linkedin_name" value="{{ contacts.linkedin_name if contacts else '' }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">LinkedIn Link</label>
+                    <input type="text" class="form-control" name="linkedin_link" value="{{ contacts.linkedin_link if contacts else '' }}">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Facebook Name</label>
+                    <input type="text" class="form-control" name="facebook_name" value="{{ contacts.facebook_name if contacts else '' }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Facebook Link</label>
+                    <input type="text" class="form-control" name="facebook_link" value="{{ contacts.facebook_link if contacts else '' }}">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Instagram Name</label>
+                    <input type="text" class="form-control" name="instagram_name" value="{{ contacts.instagram_name if contacts else '' }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Instagram Link</label>
+                    <input type="text" class="form-control" name="instagram_link" value="{{ contacts.instagram_link if contacts else '' }}">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label class="form-label">Telegram Name</label>
+                    <input type="text" class="form-control" name="telegram_name" value="{{ contacts.telegram_name if contacts else '' }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Telegram Link</label>
+                    <input type="text" class="form-control" name="telegram_link" value="{{ contacts.telegram_link if contacts else '' }}">
+                  </div>
+                </div>
+                <div class="mt-4 text-end">
+                  <button type="button" class="btn btn-dark px-5" id="saveSettings">Save Settings</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
         <section id="project-list" class="container mt-5" data-aos="fade-up">
           <h3>Manage Portfolio</h3>
           <div class="table-responsive">
