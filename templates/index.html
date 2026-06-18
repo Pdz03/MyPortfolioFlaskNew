@@ -118,10 +118,11 @@
                       <div class="hero-actions">
                         <a href="#skill" class="btn btn-dark">Let's see my skill!</a>
                         <a
-                          href="https://drive.google.com/file/d/1ej2ZyEZQLCEwcgKwfIjjuRn9HFlkH7Oa/view?usp=sharing"
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="#cvPreviewModal"
+                          id="open-cv-preview"
                           class="btn btn-outline-dark"
+                          data-bs-toggle="modal"
+                          data-bs-target="#cvPreviewModal"
                           >My CV</a
                         >
                       </div>
@@ -379,6 +380,52 @@
       class="scroll-top d-flex align-items-center justify-content-center"
       ><i class="bi bi-arrow-up-short"></i
     ></a>
+
+    <div
+      class="modal fade"
+      id="cvPreviewModal"
+      tabindex="-1"
+      aria-labelledby="cvPreviewModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header bg-dark text-white">
+            <h5 class="modal-title" id="cvPreviewModalLabel">Preview CV - Syaifudin Fendi Prasetyo</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-0 bg-dark">
+            <iframe
+              src="{{ url_for('static', filename='assets/doc/CV Syaifudin Fendi Prasetyo.pdf') }}#toolbar=1&navpanes=0"
+              title="Preview CV Syaifudin Fendi Prasetyo"
+              style="width: 100%; height: 80vh; border: 0;"
+            ></iframe>
+          </div>
+          <div class="modal-footer">
+            <a
+              href="{{ url_for('static', filename='assets/doc/CV Syaifudin Fendi Prasetyo.pdf') }}"
+              id="open-cv-pdf"
+              class="btn btn-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Open PDF</a
+            >
+            <a
+              href="{{ url_for('static', filename='assets/doc/CV Syaifudin Fendi Prasetyo.pdf') }}"
+              id="download-cv-pdf"
+              class="btn btn-outline-dark"
+              download
+              >Download CV</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="preloader"></div>
 
