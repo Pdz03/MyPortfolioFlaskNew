@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, send_from_directory
 from pymongo import MongoClient
 from datetime import datetime, timedelta
 from werkzeug.utils import secure_filename
@@ -20,6 +20,15 @@ def home():
     
     settings = db.settings.find_one({'type': 'contacts'})
     return render_template('index.html', porto = dataproject, contacts = settings)
+
+@app.route('/cv', methods=['GET'])
+def cv_file():
+    return send_from_directory('static/assets/doc', 'CV Syaifudin Fendi Prasetyo.pdf')
+
+
+@app.route('/cv/preview', methods=['GET'])
+def cv_preview():
+    return render_template('cv-preview.html')
 
 
 @app.route('/admin', methods=['GET'])
